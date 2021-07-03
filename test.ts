@@ -62,23 +62,47 @@ Deno.test(
 Deno.test(
   "negative_from",
   () => {
-    assertThrows(() => range`-1..3`(arr), RangeError, "from (-1) is less than 0");
-    assertThrows(() => range("-1..3")(arr), RangeError, "from (-1) is less than 0");
+    assertThrows(
+      () => range`-1..3`(arr),
+      RangeError,
+      "start (-1) is less than 0"
+    );
+    assertThrows(
+      () => range("-1..3")(arr),
+      RangeError,
+      "start (-1) is less than 0"
+    );
   }
 );
 
 Deno.test(
   "negative_to",
   () => {
-    assertThrows(() => range`1..-3`(arr), RangeError, "to (-3) is less than 0");
-    assertThrows(() => range("1..-3")(arr), RangeError, "to (-3) is less than 0");
+    assertThrows(
+      () => range`1..-3`(arr),
+      RangeError,
+      "end (-3) is less than 0"
+    );
+    assertThrows(
+      () => range("1..-3")(arr),
+      RangeError,
+      "end (-3) is less than 0"
+    );
   }
 );
 
 Deno.test(
   "from_greater_than_to",
   () => {
-    assertThrows(() => range`3..2`(arr), RangeError, "from (3) is greater than to (2)");
-    assertThrows(() => range("3..2")(arr), RangeError, "from (3) is greater than to (2)");
+    assertThrows(
+      () => range`3..2`(arr),
+      RangeError,
+      "start (3) is greater than end (2)"
+    );
+    assertThrows(
+      () => range("3..2")(arr),
+      RangeError,
+      "start (3) is greater than end (2)"
+    );
   }
 );

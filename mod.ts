@@ -77,18 +77,20 @@ export function range(range: string | TemplateStringsArray): Searcher {
   const exec = RANGE_REGEX.exec(range);
   if(!exec) { throw SyntaxError("invalid range"); }
 
-  const from = exec[1] === "" ? undefined : Number(exec[1]);
-  let to = exec[3] === "" ? undefined : Number(exec[3]);
+  const start = exec[1] === "" ? undefined : Number(exec[1]);
+  let end = exec[3] === "" ? undefined : Number(exec[3]);
 
-  if(to && exec[2] === "..=") to += 1;
+  if(end && exec[2] === "..=") end += 1;
 
-  if(from && from < 0) { throw RangeError(`from (${from}) is less than 0`); }
-  if(to && to < 0) { throw RangeError(`to (${to}) is less than 0`); }
-  if(from && to && from > to) {
-    throw RangeError(`from (${from}) is greater than to (${to})`);
+  if(start && start < 0) {
+    throw RangeError(`start (${start}) is less than 0`);
+  } else if(end && end < 0) {
+    throw RangeError(`end (${end}) is less than 0`);
+  } else if(start && end && start > end) {
+    throw RangeError(`start (${start}) is greater than end (${end})`);
   }
 
   return <T>(arr: T[]): T[] => {
-    return arr.slice(from, to);
+    return arr.slice(start, end);
   };
 }
