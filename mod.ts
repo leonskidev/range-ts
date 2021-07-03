@@ -82,12 +82,11 @@ export function range(range: string | TemplateStringsArray): Searcher {
 
   if(end && exec[2] === "..=") end += 1;
 
-  if(start && start < 0) {
-    throw RangeError(`start (${start}) is less than 0`);
-  } else if(end && end < 0) {
-    throw RangeError(`end (${end}) is less than 0`);
-  } else if(start && end && start > end) {
-    throw RangeError(`start (${start}) is greater than end (${end})`);
+  if(start) {
+    if(end && start > end) {
+      throw RangeError(`start (${start}) is greater than end (${end})`);
+    }
+    if(start < 0) { throw RangeError(`start (${start}) is less than 0`); }
   }
 
   return <T>(arr: T[]): T[] => {

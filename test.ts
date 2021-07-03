@@ -81,12 +81,12 @@ Deno.test(
     assertThrows(
       () => range`1..-3`(arr),
       RangeError,
-      "end (-3) is less than 0"
+      "start (1) is greater than end (-3)"
     );
     assertThrows(
       () => range("1..-3")(arr),
       RangeError,
-      "end (-3) is less than 0"
+      "start (1) is greater than end (-3)"
     );
   }
 );
