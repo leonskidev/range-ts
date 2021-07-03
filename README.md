@@ -5,13 +5,42 @@ a function. Most use cases **should not** prefer to use this over the built-in
 `Array.prototype.slice` method, this is just a fancy wrapper around that. But
 this still does come in handy for some situations and is very flexable.
 
+## Usage
+
+Simply add range as a dependancy and use the exportend `range` function:
+
+```ts
+// don't forget to add a version when you use it
+import { range } from "https://deno.land/x/range";
+
+// a quick array for the example
+const arr = [1, 2, "hello", "world"];
+
+// using it as a template literal
+range`1..3`(arr);
+// using it as a regular function
+range("1..3")(arr);
+```
+
 ## Example
 
 You can run the `example.ts` either by cloning the repo and running `deno run
 example.ts` or by running `deno run https://deno.land/x/range/example.ts`. The
 output should resemble something like what you see below:
 
-![example.ts output](.github/example.png)
+```ts
+arr: [ 1, 2, "hello", "world" ]
+
+..: [ 1, 2, "hello", "world" ]
+..=: [ 1, 2, "hello", "world" ]
+
+1..3: [ 2, "hello" ]
+1..=3: [ 2, "hello", "world" ]
+..3: [ 1, 2, "hello" ]
+..=3: [ 1, 2, "hello", "world" ]
+1..: [ 2, "hello", "world" ]
+1..=: [ 2, "hello", "world" ]
+```
 
 ## Tests
 
