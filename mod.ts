@@ -72,10 +72,10 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  * @returns A function that can be called to find the given range on any array.
  */
 export function range(range: string | TemplateStringsArray): Searcher {
-  if (typeof (range) !== "string")range = range[0];
+  if (typeof (range) !== "string") range = range[0];
 
   const exec = RANGE_REGEX.exec(range);
-  if (!exec)throw SyntaxError("invalid range");
+  if (!exec) throw SyntaxError("invalid range");
 
   const start = exec[1] === "" ? undefined : Number(exec[1]);
   let end = exec[3] === "" ? undefined : Number(exec[3]);
@@ -86,7 +86,7 @@ export function range(range: string | TemplateStringsArray): Searcher {
     if (end && start > end) {
       throw RangeError(`start (${start}) is greater than end (${end})`);
     }
-    if (start < 0)throw RangeError(`start (${start}) is less than 0`);
+    if (start < 0) throw RangeError(`start (${start}) is less than 0`);
   }
 
   return <T>(arr: T[]): T[] => {
