@@ -15,3 +15,4 @@ console.log("1..=3:", range`1..=3`(arr));
 console.log("..3:", range`..3`(arr));
 console.log("..=3:", range`..=3`(arr));
 console.log("1..:", range`1..`(arr));
+console.log("1..=:", range`1..=`(arr));

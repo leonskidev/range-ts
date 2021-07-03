@@ -57,9 +57,10 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  * // ..=3: [ 2, "hello", "world" ]
  * ```
  * 
- * ## Inclusive to End
+ * ## To End
  * 
- * You can get a copy of an inclusive range to the end (from `a`) using `a..`.
+ * You can get a copy of an inclusive range to the end (from `a`) using `a..`
+ * (prefered) or `a..=`.
  * 
  * ```ts
  * const arr = [1, 2, "hello", "world"];
