@@ -40,8 +40,8 @@ jobs:
       - name: Run Linter
         run: deno lint
 
-      - name: Cache Dependencies
-        run: deno cache deps.ts
+      # - name: Cache Dependencies
+      #   run: deno cache deps.ts
 
       - name: Run Tests
         run: deno test -A --unstable
