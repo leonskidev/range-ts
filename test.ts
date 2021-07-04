@@ -39,7 +39,7 @@ Deno.test(
 );
 
 Deno.test(
-  "negative_from",
+  "negative_start",
   () => {
     assertThrows(
       () => range("-1..3")(arr),
@@ -50,7 +50,7 @@ Deno.test(
 );
 
 Deno.test(
-  "negative_to",
+  "negative_end",
   () => {
     assertThrows(
       () => range("1..-3")(arr),
