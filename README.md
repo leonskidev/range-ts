@@ -48,3 +48,32 @@ change anything, make sure that the tests pass and are modified as needed,
 thanks.
 
 [Rust]: https://rust-lang.org
+
+## Range vs Native
+
+As said at the top:
+
+> _"Most use cases **should not** prefer to use this over the built-in
+> `Array.prototype.slice` method, this is just a fancy wrapper around that."_
+
+Let's see how you'd implement the same thing using both methods:
+
+```ts
+// native
+arr.slice(1, 3);
+// ranges
+range("1..3")(arr);
+```
+
+As you can see, the native method is not only shorter, but faster too (based on
+the worst case I got running the benchmark):
+
+```
+benchmark native...
+  10000 runs avg: 0.0012ms
+benchmark range...
+  10000 runs avg: 0.0032ms
+```
+
+If you want to run the benchmark yourself, you can either clone the repo and run
+`deno run bench.ts` or run `deno run https://deno.land/x/range/bench.ts`.
