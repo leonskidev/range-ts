@@ -65,14 +65,13 @@ arr.slice(1, 3);
 range("1..3")(arr);
 ```
 
-As you can see, the native method is not only shorter, but faster too (based on
-the worst case I got running the benchmark):
+As you can see, the native method is not only shorter, but faster too:
 
 ```
-benchmark native...
-  10000 runs avg: 0.0012ms
-benchmark range...
-  10000 runs avg: 0.0032ms
+benchmark native ... 
+  1000000 runs avg: 0.001322ms
+benchmark range ... 
+  1000000 runs avg: 0.00161ms
 ```
 
 If you want to run the benchmark yourself, you can either clone the repo and run
