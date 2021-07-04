@@ -56,7 +56,7 @@ As said at the top:
 > _"Most use cases **should not** prefer to use this over the built-in
 > `Array.prototype.slice` method, this is just a fancy wrapper around that."_
 
-Let's see how you'd implement the same thing using both methods:
+Let's see how you would implement the same thing using both methods:
 
 ```ts
 // native
