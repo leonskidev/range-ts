@@ -1,7 +1,4 @@
-import {
-  assertEquals,
-  assertThrows,
-} from "https://deno.land/std@0.100.0/testing/asserts.ts";
+import { assertEquals, assertThrows } from "./deps.ts";
 import { range } from "./mod.ts";
 
 const arr = [1, 2, "hello", "world"];
