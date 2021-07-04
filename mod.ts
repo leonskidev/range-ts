@@ -1,4 +1,7 @@
-export type Slicer = <T>(arr: T[]) => T[];
+export interface Sliceable {
+  slice(start?: number | undefined, end?: number | undefined): this;
+}
+export type Slicer = <T extends Sliceable>(arr: T) => T;
 
 const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
 
@@ -87,7 +90,7 @@ export function range(range: string): Slicer {
     if (start < 0) throw RangeError(`start (${start}) is less than 0`);
   }
 
-  return <T>(arr: T[]): T[] => {
+  return <T extends Sliceable>(arr: T): T => {
     return arr.slice(start, end);
   };
 }
