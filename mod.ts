@@ -75,10 +75,10 @@ export function range(range: string): Slicer {
   const exec = RANGE_REGEX.exec(range);
   if (!exec) throw SyntaxError("invalid range");
 
-  const start = exec[1] === "" ? undefined : Number(exec[1]);
-  let end = exec[3] === "" ? undefined : Number(exec[3]);
+  const start = exec[1].length === 0 ? undefined : Number(exec[1]);
+  let end = exec[3].length === 0 ? undefined : Number(exec[3]);
 
-  if (end && exec[2] === "..=") end += 1;
+  if (end && exec[2].length === 3) end += 1;
 
   if (start) {
     if (end && start > end) {
