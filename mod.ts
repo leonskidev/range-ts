@@ -11,7 +11,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("..:", range`..`(arr));
+ * console.log("..:", range("..")(arr));
  * // ..: [ 1, 2, "hello", "world" ]
  * ```
  *
@@ -21,7 +21,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("1..3:", range`1..3`(arr));
+ * console.log("1..3:", range("1..3")(arr));
  * // 1..3: [ 2, "hello" ]
  * ```
  *
@@ -31,7 +31,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("1..=3:", range`1..=3`(arr));
+ * console.log("1..=3:", range("1..=3")(arr));
  * // 1..=3: [ 2, "hello", "world" ]
  * ```
  *
@@ -42,7 +42,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("..3:", range`..3`(arr));
+ * console.log("..3:", range("..3")(arr));
  * // ..3: [ 1, 2, "hello" ]
  * ```
  *
@@ -53,7 +53,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("..=3:", range`..=3`(arr));
+ * console.log("..=3:", range("..=3")(arr));
  * // ..=3: [ 2, "hello", "world" ]
  * ```
  *
@@ -64,7 +64,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  *
  * ```ts
  * const arr = [1, 2, "hello", "world"];
- * console.log("1..:", range`1..`(arr));
+ * console.log("1..:", range("1..")(arr));
  * // 1..: [ 2, "hello", "world" ]
  * ```
  *
