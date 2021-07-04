@@ -1,4 +1,4 @@
-export type Searcher = <T>(arr: T[]) => T[];
+export type Slicer = <T>(arr: T[]) => T[];
 
 const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
 
@@ -71,7 +71,7 @@ const RANGE_REGEX = /^([-+]?\d*)(\.{1,2}=?)([-+]?\d*)$/;
  * @param range The range that should be copied.
  * @returns A function that can be called to find the given range on any array.
  */
-export function range(range: string): Searcher {
+export function range(range: string): Slicer {
   const exec = RANGE_REGEX.exec(range);
   if (!exec) throw SyntaxError("invalid range");
 
