@@ -15,11 +15,8 @@ import { range } from "https://deno.land/x/range";
 
 // a quick array for the example
 const arr = [1, 2, "hello", "world"];
-
-// using it as a template literal
-range`1..3`(arr);
-// using it as a regular function
-range("1..3")(arr);
+// getting values from index 1 to 2
+range("1..3")(arr); // [ 2, "hello" ]
 ```
 
 ## Example
