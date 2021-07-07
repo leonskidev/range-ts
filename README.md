@@ -30,14 +30,12 @@ something like what you see below:
 arr: [ 1, 2, "hello", "world" ]
 
 ..: [ 1, 2, "hello", "world" ]
-..=: [ 1, 2, "hello", "world" ]
 
 1..3: [ 2, "hello" ]
 1..=3: [ 2, "hello", "world" ]
 ..3: [ 1, 2, "hello" ]
 ..=3: [ 1, 2, "hello", "world" ]
 1..: [ 2, "hello", "world" ]
-1..=: [ 2, "hello", "world" ]
 ```
 
 ## Tests
@@ -65,14 +63,24 @@ arr.slice(1, 3);
 range("1..3")(arr);
 ```
 
-As you can see, the native method is not only shorter, but faster too:
+As you can see, the native method is not only shorter, but faster when `range`
+is called _fully_, e.g. `range("1..5")(arr)`. However, if a range function is
+pre-assigned and then used mutiple times, the performance is very close:
 
-```
+```bash
+PS C:\Code\range> deno run bench.ts
+running 3 benchmarks ...
 benchmark native ... 
-  1000000 runs avg: 0.001322ms
+    1000000 runs avg: 0.001144ms
 benchmark range ... 
-  1000000 runs avg: 0.00161ms
+    1000000 runs avg: 0.001424ms
+benchmark range_cached ... 
+    1000000 runs avg: 0.001106ms
+benchmark result: DONE. 3 measured; 0 filtered
 ```
+
+_**Note**: Range winning against native here is a fluke, probably down to
+caching or something else out of my control._
 
 If you want to run the benchmark yourself, you can either clone the repo and run
 `deno run bench.ts` or run `deno run https://deno.land/x/range/bench.ts`.

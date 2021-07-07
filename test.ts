@@ -19,11 +19,6 @@ Deno.test(
 );
 
 Deno.test(
-  "start_to_inclusive",
-  () => assertEquals(range("..=3")(arr), [1, 2, "hello", "world"]),
-);
-
-Deno.test(
   "index_to_end",
   () => assertEquals(range("1..")(arr), [2, "hello", "world"]),
 );
@@ -34,17 +29,12 @@ Deno.test(
 );
 
 Deno.test(
-  "all_inclusive",
-  () => assertEquals(range("..=")(arr), [1, 2, "hello", "world"]),
-);
-
-Deno.test(
   "negative_start",
   () => {
     assertThrows(
       () => range("-1..3")(arr),
       RangeError,
-      "start (-1) is less than 0",
+      "invalid range",
     );
   },
 );
@@ -55,7 +45,7 @@ Deno.test(
     assertThrows(
       () => range("1..-3")(arr),
       RangeError,
-      "start (1) is greater than end (-3)",
+      "invalid range",
     );
   },
 );
@@ -66,18 +56,7 @@ Deno.test(
     assertThrows(
       () => range("3..2")(arr),
       RangeError,
-      "start (3) is greater than end (2)",
-    );
-  },
-);
-
-Deno.test(
-  "invalid_range",
-  () => {
-    assertThrows(
-      () => range("1..2..3")(arr),
-      SyntaxError,
-      "invalid range",
+      "start is greater than end",
     );
   },
 );

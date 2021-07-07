@@ -23,4 +23,16 @@ bench({
   },
 });
 
+const cached = range("1..5");
+
+bench({
+  name: "range_cached",
+  runs: 1000000,
+  func(b) {
+    b.start();
+    cached(arr);
+    b.stop();
+  },
+});
+
 runBenchmarks();
