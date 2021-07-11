@@ -1,3 +1,6 @@
+![Codecov](https://img.shields.io/codecov/c/gh/leonskidev/range?label=codecov&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/leonskidev/range/Deno?label=tests&style=flat-square)
+
 ## Range
 
 This adds a simple way to get slices of an array using a [Rust]-like syntax in a
@@ -40,12 +43,14 @@ arr: [ 1, 2, "hello", "world" ]
 
 ## Tests
 
-This module is fully tested by the the tests found in `test.ts`. Both errors and
-successes are tested to make sure that the module doesn't regress. If you do
+This module is fully covered by the the tests found in `test.ts`. Both errors
+and successes are tested to make sure that the module doesn't regress. If you do
 change anything, make sure that the tests pass and are modified as needed,
 thanks.
 
-[Rust]: https://rust-lang.org
+You can view the test coverage reports
+[here](https://app.codecov.io/gh/leonskidev/range). We should strive to keep
+this at 100% as much as humanly possible.
 
 ## Range vs Native
 
@@ -84,3 +89,5 @@ caching or something else out of my control._
 
 If you want to run the benchmark yourself, you can either clone the repo and run
 `deno run bench.ts` or run `deno run https://deno.land/x/range/bench.ts`.
+
+[Rust]: https://rust-lang.org
