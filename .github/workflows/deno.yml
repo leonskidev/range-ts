@@ -33,10 +33,10 @@ jobs:
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
       - name: Verify Formatting
-        run: deno fmt --check
+        run: deno fmt --check --ignore=docs/
 
       - name: Run Linter
-        run: deno lint
+        run: deno lint --ignore=docs/
 
       - name: Cache Dependencies
         run: deno cache deps.ts
@@ -64,7 +64,7 @@ jobs:
         run: deno test --coverage=coverage
 
       - name: Create Coverage Report
-        run: deno coverage ./coverage --lcov > coverage.lcov
+        run: deno coverage ./coverage --ignore=docs/ --lcov > coverage.lcov
 
       - name: Collect Coverage
         uses: codecov/codecov-action@v1
