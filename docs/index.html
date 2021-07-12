@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Lato:wght@900&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    
+    <style>
+      html {
+        background-color: #1f1f1f;
+        color: #f0f0f0;
+
+        font-family: "Merriweather", serif;
+        line-height: 1.4;
+      }
+
+      body {
+        max-width: 80ch;
+
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      h1, h2, h3 {
+        font-family: "Lato", sans-serif;
+        line-height: 1.2;
+      }
+
+      a { color: inherit; }
+
+      header, section { margin-bottom: 3rem; }
+    </style>
+
+    <link rel="stylesheet" href="prism.css">
+
+    <title>Range</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body class="lang-ts">
+    <header>
+      <h1>Range</h1>
+
+      <h2>Table of Contents</h2>
+
+      <ol>
+        <li><a href="#introduction">Rust-like ranges in Deno (TypeScript)!</a></li>
+        <li><a href="#examples-setup">Examples Setup</a></li>
+        <li>
+          <a href="#docs-plus-examples">Docs + Examples</a>
+          <ol>
+            <li><a href="#everything">Everything</a></li>
+            <li><a href="#from">From</a></li>
+            <li><a href="#to">To</a></li>
+            <li><a href="#within">Within</a></li>
+          </ol>
+        </li>
+        <li><a href="#thanks">Thanks</a></li>
+      </ol>
+    </header>
+
+    <section id="introduction">
+      <h2>Rust-like ranges in Deno (TypeScript)!</h2>
+
+      <p>
+        I love Rust's syntax, and so I thought it would be fun to transfer it,
+        in essance at least, over to Deno! It's not done yet, I'm testing out
+        some ideas to make it even more awesome at the moment.
+      </p>
+
+      <p>
+        Before you decide to use this in a production environment, <b>don't</b>.
+        This is really just a fancy fun wrapper around the built-in
+        <code>Array.prototype.slice</code> method.
+      </p>
+
+      <p><b>
+        All the code you see here can and should be substituted for that in
+        a production environment. I'm not here to create another silly
+        dependency that can, and probably will, break!
+      </b></p>
+    </section>
+
+    <section id="examples-setup">
+      <h2>Examples Setup</h2>
+
+      <p>
+        To make things easier, I'll be using the same setup for every example:
+      </p>
+
+      <pre>
+        <code>// you should add a version to this</code>
+        <code>import { range } from "https://deno.land/x/range/mod.ts";</code>
+        <code></code>
+        <code>// this will be our example array</code>
+        <code>const arr = [1, 2, "hello", "world"];</code>
+        <code></code>
+        <code>// example code goes here</code>
+      </pre>
+    </section>
+
+    <section id="docs-plus-examples">
+      <h2>Docs + Examples</h2>
+
+      <section id="everything">
+        <h3>Everything</h3>
+
+        <p>The simplest syntax gets a copy of all the items in the array:</p>
+
+        <pre>
+          <code>range("..")(arr); // [1, 2, "hello", "world"]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>0</code>
+          to index <code>arr.length - 1</code></q>.
+        </small></p>
+      </section>
+
+      <section id="from">
+        <h3>From</h3>
+
+        <p>This format gets a copy of all the items after an index:</p>
+
+        <pre>
+          <code>range("2..")(arr); // ["hello", "world"]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>2</code>
+          to index <code>arr.length - 1</code></q>.
+        </small></p>
+      </section>
+
+      <section id="to">
+        <h3>To</h3>
+
+        <p>
+          This time we want to get all the items up to an index. But there are
+          two common ways to do this, exclusively (excluding the item at index),
+          or inclusively (including the item at index).
+        </p>
+
+        <br>
+
+        <p>To exclusively get items up to an index, we would do this:</p>
+
+        <pre>
+          <code>range("..3")(arr); // [1, 2]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>0</code>
+          to index <code>2</code></q>.
+        </small></p>
+
+        <br>
+
+        <p>And to inclusively get items up to an index, we would do this:</p>
+
+        <pre>
+          <code>range("..=3")(arr); // [1, 2, "hello"]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>0</code>
+          to index <code>2</code></q>.
+        </small></p>
+      </section>
+
+      <section id="within">
+        <h3>Within</h3>
+
+        <p>
+          Just like with the above situation, we can either get items
+          exclusively:
+        </p>
+
+        <pre>
+          <code>range("1..3")(arr); // [2, "hello"]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>1</code>
+          to index <code>2</code></q>.
+        </small></p>
+
+        <br>
+
+        <p>Or inclusively:</p>
+
+        <pre>
+          <code>range("1..=3")(arr); // [2, "hello", "world"]</code>
+        </pre>
+
+        <p><small>
+          You can imagine this as saying, <q>get items from index <code>1</code>
+          to index <code>3</code></q>.
+        </small></p>
+      </section>
+    </section>
+
+    <section id="thanks">
+      <h2>Thanks</h2>
+
+      <p>
+        A massive thanks to <a href="https://mod.land">mod.land</a> for the
+        sub-domain! The <a href="https://github.com/denosaurs">denosaurs</a>
+        team also do other amazing things, so be sure to check them out!
+      </p>
+    </section>
+
+    <footer>
+      <p><b>MIT Licence</b> &bullet; <i>Copyright 2021 Leon Davis</i></p>
+    </footer>
+
+    <script defer src="prism.js"></script>
+  </body>
+</html>
